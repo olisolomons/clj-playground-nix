@@ -21,7 +21,7 @@
               {
                 projectSrc = ./.;
                 name = "me.osolomons/clj-playground";
-                main-ns = "hello.core";
+                main-ns = "clj-playground.core";
 
                 nativeImage.enable = true;
 
@@ -38,7 +38,7 @@
               nix run github:jlesquembre/clj-nix#deps-lock
             '')
             (writeShellScriptBin "repl" ''
-              clj -Sdeps '{:aliases {:nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.2.0"}}}}}' -M:nrepl -m nrepl.cmdline
+              clj -A:dev -Sdeps '{:aliases {:nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.2.0"}}}}}' -M:nrepl -m nrepl.cmdline
             '')
           ];
         };
